@@ -5,9 +5,29 @@
 
 Answer *get_indices_of_item_weights(int *weights, int length, int limit)
 {
+  /* printf("weights %d, length: %d limit: %d\n", weights, length, limit); */
   HashTable *ht = create_hash_table(16);
+  /* printf("hash table data: %d\n", ht->storage[7]); */
+  for(int i = 0; i < length ; i ++) {
+    unsigned int index = hash(weights[i], length);
+    if(ht->storage[index] == '\0') {
+      LinkedPair *new_pair = create_pair(weights[i], i);
+      /* printf("found a zero\n"); */
+      ht->storage[index] = new_pair;
+      /* printf("key: %d value: %d", ht->storage[index]->key, ht->storage[index]->value); */
+    } else {
+      int diff = limit - weights[i];
+      /* printf("diff %d\n", diff); */
+      printf("the value at diff %d\n", ht->storage[diff]->value);
+      /* printf("have to check to see if threere's a LL \n"); */
 
-  // YOUR CODE HERE
+
+
+    }
+    /* printf("index: %d\n", index); */
+    /* printf("hash table data: %d\n", ht->storage[index]); */
+  }
+  // YOUR CODE HER\nE
 
   return NULL;
 }
