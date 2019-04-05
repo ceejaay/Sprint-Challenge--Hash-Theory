@@ -5,28 +5,51 @@
 
 Answer *get_indices_of_item_weights(int *weights, int length, int limit)
 {
-  /* printf("weights %d, length: %d limit: %d\n", weights, length, limit); */
+
   HashTable *ht = create_hash_table(16);
-  /* printf("hash table data: %d\n", ht->storage[7]); */
-  for(int i = 0; i < length ; i ++) {
+  for(int i = 0; i< length; i ++ ) {
+    printf("running loop\n");
     unsigned int index = hash(weights[i], length);
+    LinkedPair *new_pair = create_pair(weights[i], i);
     if(ht->storage[index] == '\0') {
-      LinkedPair *new_pair = create_pair(weights[i], i);
-      /* printf("found a zero\n"); */
+      printf("checking for 0\n");
       ht->storage[index] = new_pair;
-      /* printf("key: %d value: %d", ht->storage[index]->key, ht->storage[index]->value); */
     } else {
-      int diff = limit - weights[i];
-      /* printf("diff %d\n", diff); */
-      printf("the value at diff %d\n", ht->storage[diff]->value);
+      printf("found a LL\n");
+      LinkedPair *node = ht->storage[index];
+      printf("Made a node \n");
+      printf("Node value %d\n", node);
+
+      /* while(node->next != NULL) { */
+      /*   printf("looking for end of LL\n"); */
+      /*   node = node->next; */
+      /* } */
+      /* LinkedPair *n = create_pair(weights[i], i); */
+      /* node->next = n; */
+    }
+  }
+
+  /* printf("weights %d, length: %d limit: %d\n", weights, length, limit); */
+  /* /1* printf("hash table data: %d\n", ht->storage[7]); *1/ */
+  /* for(int i = 0; i < length ; i ++) { */
+  /*   unsigned int index = hash(weights[i], length); */
+  /*   if(ht->storage[index] == '\0') { */
+  /*     LinkedPair *new_pair = create_pair(weights[i], i); */
+  /*     /1* printf("found a zero\n"); *1/ */
+  /*     ht->storage[index] = new_pair; */
+  /*     /1* printf("key: %d value: %d", ht->storage[index]->key, ht->storage[index]->value); *1/ */
+  /*   } else { */
+  /*     int diff = limit - weights[i]; */
+  /*     /1* printf("diff %d\n", diff); *1/ */
+  /*     printf("the value at diff %d\n", ht->storage[diff]->value); */
       /* printf("have to check to see if threere's a LL \n"); */
 
 
 
-    }
+    /* } */
     /* printf("index: %d\n", index); */
     /* printf("hash table data: %d\n", ht->storage[index]); */
-  }
+  /* } */
   // YOUR CODE HER\nE
 
   return NULL;
