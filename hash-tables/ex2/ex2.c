@@ -2,12 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include "hashtable.h"
-#include "ex2.h"
-
+#include "ex2.h" 
 char **reconstruct_trip(Ticket **tickets, int length)
 {
   HashTable *ht = create_hash_table(16);
   char **route = malloc(length * sizeof(char *));
+  /* printf("first ticket %s", tickets[0]->destination); */
+
+
 
   // YOUR CODE HERE
 

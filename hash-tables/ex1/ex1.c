@@ -10,15 +10,27 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
   for(int i = 0; i< length; i ++ ) {
     printf("running loop\n");
     unsigned int index = hash(weights[i], length);
-    LinkedPair *new_pair = create_pair(weights[i], i);
+    /* printf("the value at index: %d\n", ht->storage[index]); */
     if(ht->storage[index] == '\0') {
       printf("checking for 0\n");
-      ht->storage[index] = new_pair;
-    } else {
-      printf("found a LL\n");
-      LinkedPair *node = ht->storage[index];
-      printf("Made a node \n");
-      printf("Node value %d\n", node);
+      hash_table_insert(ht, weights[i], i);
+      /* LinkedPair *new_pair = create_pair(weights[i], i); */
+      /* ht->storage[index] = new_pair; */
+      printf("Adding new pair: %d\n", ht->storage[index]->value);
+      /* printf("checking for null: %d\n", ht->storage[index]); */
+    }
+
+    /* if(ht->storage[index] == '\0') { */
+      /* LinkedPair *new_pair = create_pair(weights[i], i); */
+    /*   printf("new node", new_pair->value); */
+    /*   printf("checking for 0\n"); */
+    /*   /1* ht->storage[index] = new_pair; *1/ */
+    /* } else { */
+    /*   printf("found a LL\n"); */
+
+    /*   LinkedPair *thing = ht->storage[index]; */
+
+    /*   printf("Made a node \n", thing->value); */
 
       /* while(node->next != NULL) { */
       /*   printf("looking for end of LL\n"); */
@@ -26,7 +38,7 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
       /* } */
       /* LinkedPair *n = create_pair(weights[i], i); */
       /* node->next = n; */
-    }
+    /* } */
   }
 
   /* printf("weights %d, length: %d limit: %d\n", weights, length, limit); */
@@ -51,6 +63,9 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
     /* printf("hash table data: %d\n", ht->storage[index]); */
   /* } */
   // YOUR CODE HER\nE
+  /* for(int i = 0; i < length; i++) { */
+  /*   printf("value: %d", ht->storage[i]->value); */
+  /* } */
 
   return NULL;
 }
