@@ -2,13 +2,26 @@
 #include <stdlib.h>
 #include <string.h>
 #include "hashtable.h"
-#include "ex2.h" 
+#include "ex2.h"
+
 char **reconstruct_trip(Ticket **tickets, int length)
 {
+  /* printf("here?"); */
   HashTable *ht = create_hash_table(16);
   char **route = malloc(length * sizeof(char *));
-  for(int i = 0; i < length; i++) {
+
+  for(int i = 0; i< length; i ++ ) {
     hash_table_insert(ht, tickets[i]->source, tickets[i]->destination);
+  }
+
+
+  route[0] = strdup(hash_table_retrieve(ht, "NONE"));
+  for(int i = 1; i<length ; i++) {
+    /* route[1] = */ 
+    /* printf("key - 1: %s,               ", hash_table_retrieve(ht, tickets[i - 1 ]->source)); */
+    route[i] = strdup(hash_table_retrieve(ht, route[i - 1]));
+    /* printf("value: %s, ", hash_table_retrieve(ht, tickets[i]->destination)); */
+
   }
 
 
